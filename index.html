@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menu Intelligence — Who's on the Menu, September 2026</title>
+<meta name="description" content="How many US and Canadian bar and restaurant drink menus carry each drinks company and brand. September 2026: 122,587 alcohol menus, 1,533 brands, 200 companies.">
+<meta property="og:title" content="Menu Intelligence — Who's on the Menu, September 2026">
+<meta property="og:description" content="Share of the menu for every major drinks company and brand: position, competitors, brands and states. September 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://menuintelligence.com/">
+<link rel="canonical" href="https://menuintelligence.com/">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#060A57;--coral:#DB5461;--teal:#00B98E;--sky:#85E4FD;--ink:#0d1030;--muted:#7a8199;--line:#e8ebf3;--bg:#fff;--amber:#8a6d1a;--amberbg:#fdf4d7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Montserrat,system-ui,sans-serif;color:var(--ink);padding:0 0 50px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.chip{font-size:8.5px;letter-spacing:.1em;padding:3px 8px;border-radius:20px;font-weight:800;white-space:nowrap}
+.chip.v{background:#dff6ee;color:#0a6b52}
+.chip.p{background:var(--amberbg);color:var(--amber)}
+/* cover */
+.cover{background:var(--navy);color:#fff;padding:52px 0 44px;margin-bottom:18px}
+.cover .kick{font-size:11px;letter-spacing:.18em;font-weight:700;color:var(--sky);text-transform:uppercase}
+.cover h1{margin:16px 0 8px;font-size:40px;font-weight:800;letter-spacing:-.8px;max-width:860px;line-height:1.12}
+.cover h1 span{font-weight:400;color:var(--sky)}
+.cover .sub{font-size:12.5px;color:#b6c2ea;line-height:1.7;max-width:760px}
+.badge{display:inline-block;margin:14px 0 4px;font-size:9.5px;letter-spacing:.12em;font-weight:800;color:#ffd76e;border:1px solid rgba(255,215,110,.45);padding:5px 11px;border-radius:20px}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px;max-width:920px}
+.proof .n{font-size:30px;font-weight:800;letter-spacing:-.7px}
+.proof .d{font-size:9px;color:#93a3dd;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1.55;margin-top:6px}
+.index{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:26px}
+.ix{background:rgba(255,255,255,.06);border:1px solid rgba(133,228,253,.25);border-radius:8px;padding:12px 13px;color:#fff;text-align:left;cursor:pointer;font-family:inherit;transition:background .15s}
+.ix:hover{background:rgba(133,228,253,.14)}
+.ix .t{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--sky)}
+.ix .s{font-size:9.5px;color:#b6c2ea;line-height:1.5;margin-top:5px;display:block}
+.ix .go{font-size:9px;color:#ffd76e;font-weight:800;margin-top:7px;display:block}
+/* controls + tabs */
+.ctl{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid var(--line);padding:14px 0 0}
+.bar{display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap}
+.fld{position:relative}
+.fld label{display:block;font-size:9.5px;font-weight:800;letter-spacing:.12em;color:var(--navy);margin-bottom:5px}
+input[type=text]{font-family:inherit;font-size:13.5px;padding:9px 12px;border:1px solid #cfd6e6;border-radius:7px;background:#fff;width:300px;color:var(--ink)}
+input[type=text]:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(133,228,253,.35)}
+.drop{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #cfd6e6;border-top:none;border-radius:0 0 7px 7px;max-height:320px;overflow-y:auto;z-index:60;display:none;box-shadow:0 10px 24px rgba(6,10,87,.13)}
+.drop.on{display:block}
+.opt{padding:8px 12px;font-size:12.5px;cursor:pointer;border-bottom:1px solid #f3f5fa;display:flex;justify-content:space-between;gap:10px}
+.opt:hover{background:#eef3ff}
+.opt .m{color:var(--muted);font-size:10.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cnt{font-size:10px;color:var(--muted);margin-top:5px}
+.tabs{display:flex;gap:2px;margin-top:12px}
+.tab{font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent}
+.tab[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--coral)}
+.panel{display:none;padding-top:16px}
+.panel.on{display:block}
+/* cards */
+.hero{background:var(--navy);color:#fff;border-radius:10px;padding:22px 28px;margin-bottom:16px}
+.hero h2q{display:block;font-size:26px;font-weight:800;letter-spacing:-.5px;margin:8px 0 8px}
+.hero .uni{font-size:11px;color:#b6c2ea;line-height:1.6}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:15px;min-height:112px}
+.kpi .v{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.6px;line-height:1.1}
+.kpi .v.coral{color:var(--coral)}
+.kpi .l{font-size:9px;color:var(--muted);line-height:1.55;margin-top:7px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:1.08fr 1fr;gap:14px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin-bottom:14px}
+.card h2{font-size:11px;letter-spacing:.1em;font-weight:800;color:var(--navy);margin:0 0 13px;text-transform:uppercase;display:flex;justify-content:space-between;gap:10px;align-items:center}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:right;font-size:8.5px;letter-spacing:.09em;color:var(--muted);font-weight:800;padding:0 0 8px;border-bottom:1.5px solid var(--navy);text-transform:uppercase}
+th:first-child,th:nth-child(2){text-align:left}
+td{padding:7px 0;border-bottom:1px solid #f0f2f8;text-align:right;font-variant-numeric:tabular-nums}
+td.rk{color:var(--muted);width:22px;text-align:left;font-size:11px}
+td.nm{text-align:left;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:190px}
+td.tl2{color:#3aa0c9;font-weight:600}
+tr:last-child td{border-bottom:none}
+tr.click{cursor:pointer}
+tr.click:hover td{background:#f7f9ff}
+.seg{display:flex;height:15px;border-radius:4px;overflow:hidden;margin-bottom:11px}
+.seg i{display:block;height:100%}
+.legend{font-size:11px;line-height:1.75}
+.legend b{font-weight:700}
+.legend .g{color:var(--muted);font-weight:400}
+.comp{margin-bottom:13px}
+.comp .n2{font-size:12px;font-weight:700;margin-bottom:5px}
+.pb{height:8px;border-radius:4px;background:#eceffa;overflow:hidden}
+.pb i{display:block;height:100%;background:var(--navy);border-radius:4px}
+.pb i.coral{background:var(--coral)}
+.comp .s2{font-size:10.5px;color:var(--muted);margin-top:5px;font-variant-numeric:tabular-nums}
+.note{font-size:10.5px;color:var(--muted);line-height:1.7;margin-top:10px}
+.hr{background:#fdf9f0;border:1px solid #f2e7ce}
+.big{font-size:34px;font-weight:800;color:var(--coral);letter-spacing:-.6px;line-height:1.1;margin-bottom:8px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:15px}
+.stat .v{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.5px}
+.stat .l{font-size:9px;color:var(--muted);line-height:1.5;margin-top:6px;font-weight:600;text-transform:uppercase}
+.delta{font-size:10px;font-weight:800;color:#0a6b52;margin-top:4px}
+#own{table-layout:fixed;min-width:820px}
+#own th,#own td{padding:9px 8px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* cartogram */
+.map{display:block;margin:6px auto 4px;max-width:640px;width:100%}
+.map .st{stroke:#fff;stroke-width:1.5;rx:4}
+.map text{font-family:Montserrat;font-weight:700;fill:#fff;pointer-events:none}
+.map .cd{font-size:10px}
+.map .vl{font-size:7.2px;font-weight:600;fill:rgba(255,255,255,.85)}
+.foot{font-size:9.5px;color:var(--muted);line-height:1.8;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.foot b{color:var(--ink)}
+.foot .t{color:var(--amber);font-weight:800}
+@media(max-width:1150px){.kpis{grid-template-columns:repeat(3,1fr)}.proof{grid-template-columns:repeat(2,1fr)}.index{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}input[type=text]{width:100%}.fld{width:100%}.cover h1{font-size:30px}}
+@media(max-width:600px){.tabs{overflow-x:auto;white-space:nowrap}.proof,.stats,.index,.kpis{grid-template-columns:1fr 1fr}.card,.panel{overflow-x:auto}.cover h1{font-size:26px}.bar{flex-wrap:wrap}table{font-size:11px}.wrap{padding:0 16px}}
+html,body{max-width:100%;overflow-x:hidden}
+</style></head><body>
+
+<div class="cover" id="cover"><div class="wrap">
+  <div class="kick">Menu Intelligence · Dobbles.AI</div>
+  <h1>WHO'S ON THE MENU <span>— September 2026</span></h1>
+  <div class="sub">We read the online drink menus of bars and restaurants across the US and Canada and record every alcohol brand they list. Search any drinks company or brand to see how many menus carry it, how it compares with competitors, and where it is strong or missing.</div>
+  <div class="badge" style="color:#85E4FD;border-color:rgba(133,228,253,.45)">DATA: SEPTEMBER 2026 MENUS · US &amp; CANADA</div>
+  <div class="proof">
+    <div><div class="n">122,587</div><div class="d">Bars &amp; restaurants with an alcohol menu online</div></div>
+    <div><div class="n">106,468</div><div class="d">Of those, menus that name at least one brand</div></div>
+    <div><div class="n">22</div><div class="d">Brands on a typical menu (median)</div></div>
+    <div><div class="n">1,533</div><div class="d">Brands tracked, each on 100+ menus, owner confirmed</div></div>
+  </div>
+  <div class="index" style="grid-template-columns:repeat(4,1fr)">
+    <button class="ix" data-go="ov"><span class="t">Your Position</span><span class="s">How many menus carry you, and who's around you.</span><span class="go">View →</span></button>
+    <button class="ix" data-go="pf"><span class="t">Your Brands</span><span class="s">Every brand you own, ranked by menus.</span><span class="go">View →</span></button>
+    <button class="ix" data-go="ge"><span class="t">By State</span><span class="s">Where you're strong and where you're thin.</span><span class="go">View →</span></button>
+    <button class="ix" data-go="mk"><span class="t">The Market</span><span class="s">What's on the menu overall, and how we measure.</span><span class="go">View →</span></button>
+  </div>
+</div></div>
+
+<div class="ctl"><div class="wrap">
+  <div class="bar">
+    <div class="fld"><label>Company — type to search</label>
+      <input type="text" id="pi" placeholder="Diageo" autocomplete="off"><div class="drop" id="pd"></div>
+      <div class="cnt" id="pc"></div></div>
+    <div class="fld"><label>Brand (optional) — type to search</label>
+      <input type="text" id="bi" placeholder="All brands of this company" autocomplete="off"><div class="drop" id="bd"></div>
+      <div class="cnt" id="bc"></div></div>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-t="ov" aria-selected="true">Your Position</button>
+    <button class="tab" role="tab" data-t="pf" aria-selected="false">Your Brands</button>
+    <button class="tab" role="tab" data-t="ge" aria-selected="false">By State</button>
+    <button class="tab" role="tab" data-t="mk" aria-selected="false">The Market</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+<!-- POSITION -->
+<div class="panel on" id="p-ov">
+  <div class="hero"><h2q id="h1"></h2q><div class="uni" id="uni"></div></div>
+  <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+    <div class="kpi"><div class="v" id="k1"></div><div class="l" id="l1"></div></div>
+    <div class="kpi"><div class="v" id="k2"></div><div class="l" id="l2"></div></div>
+    <div class="kpi"><div class="v" id="k3"></div><div class="l" id="l3"></div></div>
+    <div class="kpi"><div class="v coral" id="k4"></div><div class="l" id="l4"></div></div>
+  </div>
+  <div class="grid"><div>
+    <div class="card"><h2 id="csh">Competitors</h2><div id="cs"></div><div class="note" id="csn"></div></div>
+  </div><div>
+    <div class="card hr"><h2 id="hrh">Menus Without You</h2>
+      <div class="big" id="hrv"></div><div class="note" id="hrn" style="margin-top:0"></div></div>
+    <div class="card"><h2>Menu Mix</h2>
+      <div class="seg" id="segbar"></div><div class="legend" id="seglg"></div>
+      <div class="note">How this company's menu listings split across spirits, beer and wine.</div></div>
+  </div></div>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="panel" id="p-pf">
+  <div class="card"><h2 id="pfh">Your Brands</h2>
+    <table><thead><tr><th>#</th><th>Brand</th><th>Menus</th><th>Share of menus</th><th>Menu listings</th></tr></thead><tbody id="pf"></tbody></table>
+    <div class="note" id="pfn"></div></div>
+</div>
+
+<!-- GEOGRAPHY -->
+<div class="panel" id="p-ge">
+  <div class="grid"><div>
+    <div class="card"><h2 id="geh">Share of Menus by State</h2>
+      <svg class="map" id="map" viewBox="0 0 780 530" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="note" id="gen"></div></div>
+  </div><div>
+    <div class="card"><h2 id="gth">Top States</h2>
+      <table><thead><tr><th>#</th><th>State</th><th>Menus with you</th><th>Menus in state</th><th>Share</th></tr></thead><tbody id="gt"></tbody></table>
+      <div class="note" id="gtn"></div></div>
+  </div></div>
+</div>
+
+<!-- MARKET -->
+<div class="panel" id="p-mk">
+  <div class="hero"><h2q>What we measure</h2q>
+    <div class="uni">Each month we collect the online drink menus of bars and restaurants in the US and Canada and record every alcohol brand listed. In September 2026 we found <b>122,587</b> outlets with an alcohol menu online. <b>106,468</b> of them name at least one brand; the other <b>16,119</b> list drinks without naming a brand (“draft beer”, “house red”) or list only their own products: open doors for any brand. A typical branded menu lists <b>22</b> brands.</div>
+  </div>
+  <div class="grid"><div>
+    <div class="card"><h2>What's on the Menu</h2>
+      <div class="seg" id="mseg"></div><div class="legend" id="mlg"></div>
+      <div class="note">Share of all brand listings across the 106,468 menus that name a brand.</div></div>
+  </div><div>
+    <div class="card"><h2>How to Read This Page</h2>
+      <div class="note" style="margin-top:0;line-height:1.8">
+      <b>Menus</b> — outlets whose menu lists at least one of your brands.<br>
+      <b>Share of menus</b> — those outlets as a share of all 122,587 alcohol-serving outlets.<br>
+      <b>Menu listings</b> — every line on a menu that names your brand (a bar listing two of your bourbons counts twice).<br>
+      <b>Menus without you</b> — alcohol-serving outlets that carry none of your brands: your prospect list. For spirits companies, counted among the menus that list spirits.<br>
+      This is <b>menu presence</b>, not sales volume or market share. September 2026 is our first published month; month-over-month change starts in October.</div></div>
+  </div></div>
+</div>
+
+<div class="foot">
+<details><summary style="cursor:pointer;font-weight:800;color:var(--ink)">Methodology</summary>
+<p><b>Source.</b> Menus are read from each outlet's own website. For 832 chain locations (0.7%), the chain's standard drink list is used instead of the location's own page.</p>
+<p><b>Base.</b> North America: 122,587 outlets with a September 2026 menu; 106,468 of them list at least one brand; mean 40.27 brands per branded outlet (median 22), cocktail ingredients excluded. Outlet universe: 142,034 venues, minus 6,429 excluded (closed, wrong or unverified website), 5,066 duplicate records and 155 cannabis dispensaries, plus 832 chain locations verified on Google Maps.</p>
+<p><b>Brands and owners.</b> 1,533 brands on 100 or more menus. Each brand's current owner was checked against a public source in September 2026; the current owner is applied to the whole period. Spelling variants of one brand are combined. Brands whose owner could not be confirmed are left out. Company search covers the 200 largest companies by listings; state detail covers the top 50 (US states).</p>
+<p><b>Spirits.</b> Includes liqueurs, aperitifs, bitters, fortified wine and sake.</p>
+</details>
+</div>
+
+</div>
+<script>
+
+const P=[["Diageo",52892,181742,37],["AB InBev",48895,157555,40],["Constellation Brands",52076,130440,23],["Pernod Ricard",43762,120441,42],["Bacardi",42369,111902,20],["Molson Coors",46033,109755,20],["Campari Group",45930,101558,20],["Suntory Global Spirits",31940,92683,32],["E. & J. Gallo",34316,79556,44],["Sazerac",29645,77780,39],["Heineken",38434,67666,20],["Brown-Forman",31894,60663,14],["LVMH",25137,57825,18],["Heaven Hill",21476,40511,23],["Boston Beer",21255,40347,7],["William Grant & Sons",20524,39702,12],["Becle",19019,31939,14],["Rémy Cointreau",22256,30388,10],["Fifth Generation",26090,28353,2],["Treasury Wine",14223,24770,14],["Jackson Family",12404,20976,17],["Kirin",14191,19664,7],["Wagner Family",10859,17341,5],["Duckhorn",10024,16704,7],["Asahi",13912,15681,7],["Trinchero",10511,13688,14],["Mark Anthony",11747,13428,4],["D.G. Yuengling",12534,13056,1],["Angostura",12252,12259,1],["Branca",9309,12225,6],["Pabst",9706,11552,8],["The Wine Group",10086,11455,11],["Deutsch Family",9604,10688,5],["Edrington",8396,10320,3],["Duvel Moortgat",7979,9833,8],["Luxardo",8309,8312,1],["Mast-Jägermeister",7739,8286,2],["Tilray Brands",6661,8054,11],["Ste. Michelle Wine Estates",6089,7698,8],["Foley Family",5661,7652,9],["Sapporo",6791,7589,2],["SPI Group",5837,7098,2],["Sierra Nevada",6742,6818,1],["Illva Saronno",6346,6736,2],["Nonino",5715,6678,2],["Zamora",6611,6611,1],["Kobrand (Kopf family)",5136,6457,5],["Milestone Brands",5896,6061,2],["Clase Azul",5900,5922,1],["Maison Ferrand",4474,5699,3],["Huneeus",4045,5686,4],["Antinori",4226,5328,5],["Delicato",4178,4969,6],["Chartreuse",4643,4933,1],["Silver Oak",4329,4909,2],["Herita Marzotto Wines",4842,4842,1],["J. Lohr",4689,4730,2],["Gambrinus",4477,4718,1],["Allagash",4450,4481,1],["Chatham Imports",4018,4395,2],["Cakebread",4316,4319,1],["Taylor Fladgate",3227,4237,3],["Banfi",3498,3924,3],["Symington Family Estates",3071,3823,4],["Stateside",3620,3765,2],["Mahou San Miguel",3636,3670,2],["WhistlePig",3614,3645,1],["Wonderful Company",3508,3624,2],["Hope Family",3265,3624,3],["Goslings",3529,3593,1],["Crimson Wine Group",3030,3590,4],["Takara",2924,3495,5],["Jordan",3414,3414,1],["Lucas Bols",3252,3411,4],["Willett",1968,3383,4],["Henkell",3286,3287,1],["Louis Roederer",2803,3247,4],["De Kuyper",2469,3187,3],["MGP Ingredients",2359,3187,6],["Giffard",3087,3176,1],["Oskar Blues",2591,3088,4],["Terlato Wine Group",2785,3047,4],["Cocchi",3009,3012,1],["Hess",2888,2951,2],["Rodney Strong",2938,2940,1],["Downeast",2728,2778,1],["Firestone Walker",2707,2764,3],["Vintage Wine Estates",2590,2647,4],["Infinium Spirits",2482,2624,3],["Taittinger",2550,2598,1],["Serrallés",2531,2558,1],["Concha y Toro",2190,2417,6],["Vinarchy",2101,2387,3],["St. George",2323,2326,1],["Deschutes",2306,2310,1],["Catena Zapata",2199,2284,1],["Laurent-Perrier",2252,2258,1],["Delegat",2255,2256,1],["Paul Hobbs",2001,2241,2],["Freixenet",2136,2222,2],["Dolin",2192,2200,1],["Arterra Wines Canada",1793,2131,2],["Zonin",2038,2105,2],["Otsuka Pharmaceutical",2076,2089,2],["Chloe",1994,1994,1],["Gaja",1988,1992,1],["Don Fulano",1944,1944,1],["3 Floyds",1834,1941,1],["Grupo Pellas (Flor de Caña)",1923,1935,1],["Billecart-Salmon",1928,1929,1],["Whyte & Mackay",1869,1892,1],["Abita",1867,1879,1],["Far Niente Wine Estates",1757,1867,2],["Krause Holdings",1852,1854,1],["Chopin",1790,1792,1],["Tequilera Corralejo, S.A. de C.V.",1780,1781,1],["Montenegro",1778,1778,1],["Frescobaldi",1634,1767,2],["Weihenstephaner",1641,1757,1],["Schramsberg",1752,1754,1],["Emmolo River Ranch",1733,1733,1],["Famille Perrin",1638,1705,2],["Masi Agricola",1682,1703,1],["Fortaleza",1684,1685,1],["Groth",1683,1683,1],["COS",1518,1682,1],["Zenato",1676,1676,1],["Heitz",1653,1654,1],["Shinsegae Group",1605,1607,1],["Bronco Wine",1574,1604,4],["Victory",1591,1597,1],["Left Hand",1534,1586,1],["Great Lakes",1508,1537,1],["Hakutsuru",1504,1508,1],["Siete Leguas",1494,1508,1],["Craft Brew Alliance",1466,1506,2],["Narragansett",1487,1490,1],["Chateau Montelena",1488,1488,1],["WarRoom Cellars",1468,1482,2],["Tsingtao",1441,1466,1],["SNFOOD & BEVERAGE",1450,1462,1],["Honig",1456,1458,1],["Louis Latour",1455,1456,1],["Trefethen",1454,1455,1],["Joseph Drouhin",1400,1454,1],["Fiddlehead Brewing Company",1441,1441,1],["Playa Holding Corporation",1438,1438,1],["Michele Chiarlo",1428,1428,1],["Damm",1417,1427,1],["Frog's Leap",1421,1422,1],["Tanteo",1406,1406,1],["Benvolio",1403,1403,1],["North Coast",1231,1385,2],["King Estate",1383,1383,1],["Torres",1305,1372,2],["Grgich Hills",1351,1351,1],["Wente",1347,1351,1],["Carlsberg",1200,1344,2],["Hotaling & Co",1278,1342,3],["Allegrini",1324,1324,1],["Chimay",1305,1313,1],["Margaritaville Alcohol Beverage Trust",1298,1312,1],["New Glarus Brewing",1036,1311,2],["Ole Smoky",1181,1310,1],["Argyle",1302,1302,1],["Dr. Loosen",1299,1300,1],["Tenuta San Guido",1289,1296,1],["Caymus",1254,1289,2],["Grupo Estevez",1195,1269,2],["Kistler",1263,1264,1],["Turley",1250,1252,1],["Jacobs Family",1247,1247,1],["Garage Beer",1237,1237,1],["Cade",1212,1228,1],["Chappellet",1224,1224,1],["Prairie Organic Spirits",1210,1222,1],["Meletti",1220,1221,1],["McCormick Distilling Company",1151,1213,3],["Nicolas Feuillatte",1204,1204,1],["Komos",1190,1198,1],["Bardstown",1150,1195,2],["Trimbach",1191,1191,1],["Bollinger",1190,1190,1],["Uncle Nearest Distillery",1138,1185,1],["Hayman Group Limited",1151,1182,1],["A to Z",1164,1180,1],["Darioush",1175,1178,1],["Kikusui",1167,1172,1],["Demerara Distillers",1143,1172,1],["Sogrape Vinhos",1161,1171,1],["Huyghe Brewery",1159,1159,1],["Erath",1156,1156,1],["Roederer Estate",1129,1129,1],["Bertani",1124,1124,1],["Gerard Bertrand",1120,1120,1],["Accolade Wines",1110,1115,2],["Gekkeikan",1106,1110,1],["Tenute del Mondo",1109,1109,1],["Martin Ray Winery",1105,1107,1],["Michael David Winery",1042,1097,1]];
+const CATS=[["Wine",467246],["Lager/Pilsner",450171],["Tequila",175275],["Bourbon",159492],["Vodka",122594],["Rum",89309],["Scotch",79526],["Pale Ale/IPA",72939],["Other Liqueur",71990],["Amaro/Bitter Aperitif",70910],["Gin",66131],["Other Beer",59603],["Champagne",47229],["Orange Liqueur",38757],["Hard Seltzer",36537],["Wheat/Witbier",35253],["Sparkling",34618],["Irish Whiskey",30916],["Fortified",30437],["Amber/Brown",24452],["Coffee Liqueur",24368],["Stout/Porter",23731],["Hard Cider",23315],["Cognac",22961],["Rye Whiskey",22230],["Tennessee Whiskey",21661],["American Whiskey",20755],["Cream Liqueur",19416],["Japanese Whisky",18575],["Bitters",16980],["Fruit Liqueur",16164],["Canadian Whisky",15779],["Mezcal",15770],["Whisky Liqueur",13623],["Herbal Liqueur",13027],["Sake",11553],["RTD",8394],["NA Beer",7515],["FMB",6022],["Brandy/Armagnac",3620],["Sour/Wild",3165],["Pinot Noir",1245],["NA Spirit",1007],["Brandy",486],["Rhône/French Wine",465],["Cider",374],["Ale",354],["Amber Lager",339],["Lager",333],["Flavored Liqueur",325],["Moonshine",300],["Corn Whiskey",222],["Liqueur",177],["NA Wine",140],["Pilsner",109]];
+const BB=[[0,"Guinness",22061,22840,21],[0,"Don Julio",15171,15485,2],[0,"Baileys",14542,14550,27],[0,"Ketel One",13803,14118,4],[0,"Casamigos",13704,13843,2],[0,"Captain Morgan",12047,12166,5],[0,"Bulleit",11980,12367,3],[0,"Tanqueray",11909,11948,10],[0,"Crown Royal",11041,11060,31],[0,"Johnnie Walker",10318,10646,6],[0,"Smirnoff",7103,7119,4],[0,"Oban",4137,4138,6],[0,"Lagavulin",3717,3718,6],[0,"Mr Black",3655,3690,20],[0,"Zacapa",2795,2996,5],[0,"Ciroc",2300,2309,4],[0,"Aviation",1859,1859,10],[0,"George Dickel",1761,1863,25],[0,"Talisker",1738,1738,6],[0,"Pimm's",1594,1596,8],[0,"Smithwick's",1291,1291,19],[0,"Buchanan's",1092,1130,6],[0,"Dalwhinnie",1071,1071,6],[0,"Harp",1048,1048,1],[0,"21 Seeds",1017,1036,2],[0,"Rumple Minze",1017,1039,8],[0,"Gordon's",981,983,10],[0,"Astral",951,951,0],[0,"Balcones",561,566,26],[0,"Blade and Bow",522,529,3],[0,"Kilkenny",403,403,21],[0,"Ritual",341,357,42],[0,"Deleon",309,310,2],[0,"Mezcal Union",306,311,32],[0,"I.W. Harper",285,288,3],[0,"Roe & Co",259,259,17],[0,"J&B",121,121,6],[1,"Bud Light",32067,32300,1],[1,"Michelob Ultra",31052,31135,1],[1,"Stella Artois",25982,26038,1],[1,"Budweiser",24118,25585,1],[1,"Busch Light",4155,4155,1],[1,"NÜTRL",3447,3464,14],[1,"Goose Island",3170,3178,7],[1,"Michelob",3095,3303,1],[1,"Golden Road",2678,2773,7],[1,"Presidente",2535,2535,1],[1,"Elysian",2218,2322,7],[1,"Labatt",1924,2060,1],[1,"Mango Cart",1691,1691,14],[1,"O'Doul's",1491,1495,37],[1,"Rolling Rock",1192,1192,1],[1,"Wicked Weed",1114,1129,40],[1,"Becks",1091,1094,1],[1,"Karbach",1027,1031,11],[1,"Busch",995,996,1],[1,"Estrella Jalisco",964,964,1],[1,"Cutwater",943,948,36],[1,"Hoegaarden",884,884,15],[1,"Big Wave",768,768,1],[1,"Natural Light",675,693,1],[1,"Kokanee",629,629,1],[1,"Spaten",608,609,1],[1,"Devils Backbone",510,510,7],[1,"Labatt Blue",483,483,1],[1,"Franziskaner",468,468,15],[1,"Bass",404,404,19],[1,"Leffe",378,378,11],[1,"Alexander Keith's",334,354,46],[1,"Red Bridge",306,306,37],[1,"Omission",302,302,15],[1,"Grupo Modelo",293,293,1],[1,"Cass",292,292,1],[1,"Boddingtons",276,276,7],[1,"Ziegenbock",235,235,1],[1,"Quilmes",147,147,1],[1,"Modelito",136,136,1],[2,"Corona",34608,45467,1],[2,"Modelo",27940,28302,1],[2,"Pacifico",10051,10051,1],[2,"Negra Modelo",6989,7226,1],[2,"Kim Crawford",6006,6006,0],[2,"The Prisoner",5492,5507,0],[2,"Ruffino",5296,5305,0],[2,"High West",4024,4038,24],[2,"Robert Mondavi",3615,3658,0],[2,"Victoria",2800,2800,1],[2,"Opus One",2688,2688,0],[2,"Casa Noble",1955,1963,2],[2,"Mi Campo",1466,1466,2],[2,"Unshackled",1241,1242,0],[2,"Saldo",858,858,0],[2,"Sea Smoke",803,803,0],[2,"Lingua Franca",781,782,0],[2,"Mount Veeder",740,754,0],[2,"Archer Roose",472,474,0],[2,"Roscato",365,365,0],[2,"Drylands",347,347,0],[2,"Cisco",235,237,38],[2,"7 Moons",101,101,0],[3,"Jameson",16399,16490,17],[3,"Kahlúa",16052,16052,20],[3,"Malibu",12376,12384,5],[3,"Absolut",10758,10946,4],[3,"The Glenlivet",7285,7304,6],[3,"Beefeater",4854,4888,10],[3,"Lillet",4594,4594,18],[3,"Chivas Regal",3557,3572,6],[3,"Del Maguey",3486,3516,32],[3,"Jefferson's",2847,3042,26],[3,"Redbreast",2686,2760,17],[3,"Altos",2570,2729,2],[3,"Skrewball",2499,2499,33],[3,"Italicus",2301,2301,8],[3,"Código 1530",2189,2258,2],[3,"Mumm",2085,2296,12],[3,"Perrier Jouet",2056,2067,12],[3,"Monkey 47",1861,1861,10],[3,"Seagram's",1859,1864,8],[3,"Avión",1822,1825,2],[3,"Pernod",1598,1598,34],[3,"Plymouth",1278,1281,10],[3,"Suze",1138,1138,9],[3,"Martell",1084,1084,23],[3,"Ramazzotti",1060,1107,9],[3,"Rabbit Hole",1037,1037,3],[3,"Green Spot",1000,1000,17],[3,"Aberlour",939,941,6],[3,"Malfy",932,938,10],[3,"Powers",881,881,17],[3,"Prunotto",741,741,0],[3,"Yellow Spot",531,531,17],[3,"Tormaresca",486,486,0],[3,"Lot 40",425,426,31],[3,"Smooth Ambler",390,390,26],[3,"Ricard",292,293,34],[3,"Ojo de Tigre",287,287,2],[3,"Sobieski",259,262,4],[3,"Dubonnet",227,227,18],[3,"Ballantine's",215,215,6],[3,"Byrrh",199,199,18],[3,"TX Whiskey",131,131,26],[4,"Patrón",19477,20265,2],[4,"Bacardi",19165,19598,5],[4,"Grey Goose",16326,16360,4],[4,"St-Germain",13453,14889,8],[4,"Bombay Sapphire",10122,10246,10],[4,"Angel's Envy",6850,6860,3],[4,"Dewar's",5896,5902,6],[4,"Cazadores",4230,4231,2],[4,"Ilegal",3396,3525,32],[4,"Bénédictine",2759,2760,34],[4,"Martini & Rossi",1420,1520,18],[4,"Teeling",1146,1177,17],[4,"D'usse",939,939,23],[4,"Citronge",754,754,13],[4,"Leblon",705,705,5],[4,"Vago",679,684,32],[4,"Aberfeldy",633,634,6],[4,"Noilly Prat",336,354,9],[4,"Corzo",299,299,2],[4,"Fiero",200,200,8],[5,"Coors Light",31765,32142,1],[5,"Miller Lite",28078,28092,1],[5,"Blue Moon",22541,22547,15],[5,"Miller High Life",5973,5978,1],[5,"Coors Banquet",4546,4565,1],[5,"Miller",4252,4272,1],[5,"Coors",3638,3647,1],[5,"Molson Canadian",1910,1922,1],[5,"Leinenkugel's",1864,1943,1],[5,"Miller Genuine Draft",1148,1150,1],[5,"Hamm's",736,736,1],[5,"Redd's",489,490,38],[5,"Vizzy",381,381,14],[5,"Killian's",352,353,1],[5,"Rickard's Red",339,339,47],[5,"Canadian",328,333,48],[5,"Blue Run",296,300,3],[5,"Keystone",196,217,1],[5,"Miller 64",194,194,1],[5,"Carmenet",153,154,0],[6,"Aperol",23298,23298,9],[6,"Grand Marnier",18502,18694,13],[6,"Campari",13443,13443,9],[6,"Espolòn",9465,9468,2],[6,"Frangelico",7105,7105,8],[6,"Averna",4461,5039,9],[6,"Wild Turkey",4460,4489,3],[6,"Ancho Reyes",3292,3294,8],[6,"Cynar",3077,3077,9],[6,"Courvoisier",3072,3074,23],[6,"Appleton Estate",2346,2358,5],[6,"SKYY",2107,2119,4],[6,"Russell's Reserve",1452,1457,3],[6,"Montelobos",1310,1313,32],[6,"Cabo Wabo",1272,1272,2],[6,"Cinzano",667,679,18],[6,"Forty Creek",507,508,31],[6,"Wray & Nephew",441,441,5],[6,"X-Rated",311,312,30],[6,"American Honey",118,118,33],[7,"Maker's Mark",15483,15753,3],[7,"Jim Beam",9364,9378,3],[7,"Knob Creek",7959,7968,3],[7,"Basil Hayden",7034,7163,3],[7,"Hornitos",5156,5157,2],[7,"Laphroaig",4208,4255,6],[7,"Suntory",3672,3675,28],[7,"Midori",3533,3538,8],[7,"Sauza",3333,3346,2],[7,"Cruzan",2898,2905,5],[7,"Roku",2619,2621,10],[7,"Booker's",2433,2449,3],[7,"Hibiki",2207,2211,28],[7,"Haku",2099,2127,28],[7,"Canadian Club",2083,2084,31],[7,"Toki",2068,2068,28],[7,"El Tesoro",1835,1835,2],[7,"Yamazaki",1705,1716,28],[7,"Tres Generaciones",1530,1530,2],[7,"Baker's",1323,1324,3],[7,"Old Overholt",1084,1087,24],[7,"Effen",1036,1036,4],[7,"Old Grand Dad",1027,1060,3],[7,"Pinnacle",1025,1044,4],[7,"Bowmore",902,905,6],[7,"Auchentoshan",838,838,6],[7,"Hakushu",808,818,28],[7,"Sipsmith",804,804,10],[7,"Little Book",612,620,26],[7,"Legent",564,564,3],[7,"Apple Pucker",497,498,30],[7,"Buttershots",306,306,27],[8,"High Noon",11464,12270,14],[8,"La Marca",7181,7245,16],[8,"Four Roses",6173,6199,3],[8,"Rombauer",4732,4732,0],[8,"RumChata",3891,3951,27],[8,"Orin Swift",3606,3608,0],[8,"New Amsterdam",3379,3384,4],[8,"Ecco Domani",2923,2923,0],[8,"Whitehaven",2395,2395,0],[8,"Barefoot",2274,2277,0],[8,"Dark Horse",1972,1973,0],[8,"Canyon Road",1947,1947,0],[8,"J Vineyards",1750,1750,16],[8,"Louis M. Martini",1741,1765,0],[8,"Franciscan",1625,1625,0],[8,"William Hill",1609,1610,0],[8,"RumHaven",1583,1583,5],[8,"Nobilo",1557,1557,0],[8,"Mark West",1554,1554,0],[8,"Wycliff",1448,1459,16],[8,"Hahn",1321,1324,0],[8,"Montucky",1133,1135,1],[8,"Clos du Bois",1120,1120,0],[8,"Lunetta",1085,1085,16],[8,"Pahlmeyer",1012,1012,0],[8,"Camarena",846,846,2],[8,"Apothic",801,801,0],[8,"Talbott",648,650,0],[8,"Estancia",628,629,0],[8,"Maso Canali",610,610,0],[8,"Massican",562,562,0],[8,"Smith & Hook",499,499,0],[8,"MacMurray",433,433,0],[8,"Copper Ridge",426,427,0],[8,"Edna Valley",402,402,0],[8,"Pink Whitney",392,392,4],[8,"Chateau Souverain",331,331,0],[8,"Gnarly Head",303,304,0],[8,"Frei Brothers",238,239,0],[8,"Ravenswood",227,227,0],[8,"Storypoint",224,224,0],[8,"Wild Horse",183,183,0],[8,"E&J",155,161,39],[8,"Black Box",153,153,0],[9,"Buffalo Trace",9331,9334,3],[9,"Fireball",6973,6973,33],[9,"Blanton's",4593,4625,3],[9,"Myers's",4545,4761,5],[9,"Wheatley",4320,4342,4],[9,"Sazerac",4129,4142,24],[9,"Eagle Rare",3909,3910,3],[9,"Southern Comfort",3756,3773,33],[9,"Corazón",3409,3411,2],[9,"Peychaud's",3285,3312,29],[9,"Weller",3008,3156,3],[9,"E.H. Taylor",2550,2798,3],[9,"Parrot Bay",2102,2102,5],[9,"1792",2021,2021,3],[9,"SVEDKA",1559,1562,4],[9,"Gran Gala",1476,1502,13],[9,"Pappy Van Winkle",1436,1828,3],[9,"Seagram's 7",1425,1426,26],[9,"Stagg",1274,1282,3],[9,"Tuaca",1249,1250,8],[9,"Van Gogh",931,934,4],[9,"818",897,897,2],[9,"Traveller",805,808,3],[9,"Velvet Falernum",802,802,30],[9,"George T. Stagg",793,794,3],[9,"Benchmark",749,749,3],[9,"Caravella",663,663,30],[9,"Goldschlager",657,657,8],[9,"Monte Alban",643,643,32],[9,"Paddy's",598,598,17],[9,"Thomas H. Handy",464,464,24],[9,"Romana",459,473,8],[9,"Herbsaint",342,342,34],[9,"Firefly",325,325,49],[9,"Early Times",294,294,3],[9,"Seagram's VO",254,254,31],[9,"Dr. McGillicuddy's",227,232,30],[9,"Rebecca Creek",172,172,3],[9,"Bittermens",167,169,29],[10,"Heineken",24624,25665,1],[10,"Dos Equis",11057,11181,1],[10,"Lagunitas",8309,8312,7],[10,"Tecate",4536,4972,1],[10,"Sol",3417,3468,1],[10,"Amstel",2954,3040,1],[10,"Strongbow",1610,1610,22],[10,"Bohemia",1504,1506,1],[10,"Paulaner",1403,1406,1],[10,"Red Stripe",1347,1352,1],[10,"Moretti",1231,1231,1],[10,"Newcastle",1181,1290,19],[10,"Carta Blanca",693,693,1],[10,"Kingfisher",473,473,1],[10,"Brand",327,331,1],[10,"Tiger",299,299,1],[10,"Murphy's",278,281,21],[10,"Amarula",232,232,27],[10,"Indio",186,186,1],[10,"Imperial",131,138,1],[11,"Jack Daniel's",16055,17603,25],[11,"Woodford Reserve",12141,12166,3],[11,"Chambord",6454,6454,30],[11,"Herradura",5955,5964,2],[11,"el Jimador",5511,5513,2],[11,"Old Forester",5472,5579,3],[11,"Diplomatico",2426,2427,5],[11,"Ford's",2295,2302,10],[11,"Slane",704,705,17],[11,"Inglenook",534,534,0],[11,"GlenDronach",449,450,6],[11,"Gin Mare",377,377,10],[11,"BenRiach",327,329,6],[11,"Jack Fire",260,260,33],[12,"Hennessy",10350,10651,23],[12,"Veuve Clicquot",8721,8981,12],[12,"Moët & Chandon",6363,6525,12],[12,"Dom Pérignon",4776,4786,12],[12,"Belvedere",4756,4759,4],[12,"Chandon",3461,3472,16],[12,"Whispering Angel",3306,3308,0],[12,"Glenmorangie",3019,3026,6],[12,"Cloudy Bay",1939,1939,0],[12,"Ardbeg",1880,1880,6],[12,"Joseph Phelps",1807,1807,0],[12,"Krug",1541,1565,12],[12,"Terrazas",1468,1474,0],[12,"Ruinart",1370,1371,12],[12,"Woodinville",890,890,0],[12,"Château d'Esclans",621,621,0],[12,"Armand de Brignac",606,611,12],[12,"Château d'Yquem",159,159,18],[13,"Deep Eddy",7432,7474,4],[13,"Elijah Craig",6297,6313,3],[13,"Lunazul",4919,4919,2],[13,"Rittenhouse",2912,2915,24],[13,"Ocho",2561,2887,2],[13,"Evan Williams",2441,2456,3],[13,"Pama",2074,2074,30],[13,"Larceny",1727,1727,3],[13,"Heaven Hill",1442,1447,3],[13,"Widow Jane",1368,1372,26],[13,"Domaine de Canton",1130,1130,30],[13,"Henry McKenna",1037,1037,3],[13,"Old Fitzgerald",808,810,3],[13,"Hpnotiq",746,770,30],[13,"Christian Brothers",534,534,39],[13,"Bluecoat",491,491,10],[13,"Pikesville",463,463,24],[13,"Bernheim",377,377,26],[13,"Few",359,359,3],[13,"Black Velvet",302,302,31],[13,"Irish Mist",283,283,34],[13,"Carolans",244,244,27],[13,"Burnett's",127,127,4],[14,"Samuel Adams",11685,14050,1],[14,"Angry Orchard",11172,11180,22],[14,"Truly",3869,3884,14],[14,"Sun Cruiser",3819,3895,36],[14,"Dogfish Head",3768,3785,7],[14,"Twisted Tea",3329,3340,38],[14,"Angel City",211,213,7],[15,"Hendrick's",11908,11917,10],[15,"Glenfiddich",5387,5406,6],[15,"Milagro",5101,5121,2],[15,"The Balvenie",4467,4512,6],[15,"Tullamore D.E.W.",3195,3242,17],[15,"Monkey Shoulder",2266,2266,6],[15,"Drambuie",2192,2192,8],[15,"Sailor Jerry",1828,1855,5],[15,"Hudson",1167,1174,26],[15,"Reyka",999,1000,4],[15,"Solerno",595,595,13],[15,"The Famous Grouse",422,422,6],[16,"Jose Cuervo",10097,11013,2],[16,"1800",6603,6608,2],[16,"Maestro Dobel",2644,2959,2],[16,"Bushmills",2212,2248,17],[16,"Three Olives",1533,1591,4],[16,"400 Conejos",1451,1454,32],[16,"The Kraken",1262,1264,5],[16,"Gran Centenario",1196,1196,2],[16,"Pendleton",1139,1145,31],[16,"Stranahan's",885,889,26],[16,"Tin Cup",749,773,24],[16,"Hangar 1",399,413,4],[16,"Boodles",256,256,10],[16,"Proper Twelve",130,130,17],[17,"Cointreau",16845,16845,13],[17,"Rémy Martin",5065,5265,23],[17,"The Botanist",3088,3099,10],[17,"Mount Gay",2002,2036,5],[17,"Bruichladdich",950,950,6],[17,"Louis XIII",664,665,23],[17,"St. Remy",486,486,43],[17,"Metaxa",394,398,8],[17,"Westland",393,394,26],[17,"Belle de Brillet",250,250,39],[18,"Tito's",24621,24742,4],[18,"LALO",3592,3611,2],[19,"Stags' Leap",5233,5261,0],[19,"DAOU",5125,5126,0],[19,"Beringer",3065,3068,0],[19,"Frank Family",2258,2258,0],[19,"Penfolds",1767,1768,0],[19,"Matua",1387,1387,0],[19,"Sterling",1356,1367,0],[19,"Etude",900,900,0],[19,"Lindemans",815,830,0],[19,"19 Crimes",814,814,0],[19,"Beaulieu Vineyard",654,654,0],[19,"Columbia Crest",627,627,0],[19,"Pessimist",546,546,0],[19,"Castello di Gabbiano",164,164,0],[20,"Kendall-Jackson",6258,6330,0],[20,"La Crema",4509,4510,0],[20,"Freemark Abbey",1260,1260,0],[20,"Siduri",914,914,0],[20,"Hartford Court",897,897,0],[20,"Murphy Goode",828,828,0],[20,"Carmel Road",800,802,0],[20,"Matanzas Creek",798,798,0],[20,"Cambria",765,765,0],[20,"Mt. Brave",639,639,0],[20,"Penner Ash",627,628,0],[20,"Stonestreet",618,618,0],[20,"Tenuta di Arceno",549,549,0],[20,"Brewer-Clifton",524,524,0],[20,"Gran Moraine",401,401,0],[20,"Copain",316,316,0],[20,"Edmeades",197,197,0],[21,"Bell's",4479,4722,7],[21,"New Belgium",3926,3942,7],[21,"Voodoo Ranger",3256,3256,7],[21,"Kirin",3079,4084,1],[21,"Fat Tire",2412,2414,19],[21,"Oberon",1006,1009,15],[21,"MacRostie",237,237,0],[22,"Caymus",7260,7261,0],[22,"Belle Glos",3579,3581,0],[22,"Conundrum",2639,2642,0],[22,"Bonanza",2361,2361,0],[22,"Mer Soleil",1496,1496,0],[23,"Duckhorn",5389,5390,0],[23,"Sonoma-Cutrer",4402,4443,0],[23,"Decoy",4013,4015,0],[23,"Kosta Browne",922,922,0],[23,"Goldeneye",800,800,0],[23,"Calera",679,679,0],[23,"Paraduxx",455,455,0],[24,"Peroni",7514,7519,1],[24,"Asahi",4017,4069,1],[24,"Nikka",2451,2467,28],[24,"Pilsner Urquell",760,760,1],[24,"Foster's",474,474,1],[24,"Grolsch",252,252,1],[24,"Fuller's",139,140,7],[25,"Joel Gott",2487,2487,0],[25,"Fre",2480,2666,37],[25,"Seaglass",1492,1492,0],[25,"Tres Agaves",1417,1417,2],[25,"Sutter Home",1126,1126,0],[25,"Sycamore Lane",750,750,0],[25,"Napa Cellars",741,741,0],[25,"Menage a Trois",638,638,0],[25,"Charles & Charles",558,558,0],[25,"Bieler",556,556,0],[25,"Trinity Oaks",363,363,0],[25,"Echo Bay",353,353,0],[25,"Bieler Pere et Fils",300,300,0],[25,"Three Thieves",241,241,0],[26,"White Claw",10763,11560,14],[26,"Mike's Hard",1304,1372,38],[26,"Mission Hill",266,266,0],[26,"Cayman Jack",230,230,38],[27,"Yuengling",12534,13056,19],[28,"Angostura",12252,12259,29],[29,"Fernet-Branca",4399,4503,9],[29,"Carpano",3686,3687,18],[29,"Borghetti",2774,2787,20],[29,"Punt e Mes",677,677,18],[29,"Antica",408,413,18],[29,"Branca Menta",158,158,34],[30,"Pabst Blue Ribbon",7296,7546,1],[30,"Lone Star",1628,1681,1],[30,"Rainier",776,776,1],[30,"Old Style",728,729,1],[30,"Not Your Father's",305,306,38],[30,"Schlitz",175,175,1],[30,"Stroh's",174,174,1],[30,"Old Milwaukee",149,165,1],[31,"Meiomi",5718,5718,0],[31,"Woodbridge",1162,1163,0],[31,"Benziger",1045,1078,0],[31,"St. Agrestis",1025,1026,8],[31,"Imagery",1002,1003,0],[31,"J. Roget",414,414,16],[31,"Archetype",224,225,0],[31,"Dreaming Tree",218,218,0],[31,"7 Deadly Zins",209,209,0],[31,"Cook's",203,203,12],[31,"Beso Del Sol",198,198,0],[32,"Josh Cellars",7012,7032,0],[32,"Redemption",2205,2205,24],[32,"Cantera Negra",690,692,32],[32,"Bib & Tucker",400,401,3],[32,"Gray Whale Gin",358,358,10],[33,"The Macallan",7623,7693,6],[33,"Highland Park",1772,1782,6],[33,"Brugal",845,845,5],[34,"Stone",3622,3768,7],[34,"805",1820,1886,1],[34,"Boulevard",1442,1446,1],[34,"Duvel",966,966,11],[34,"Firestone Walker",872,872,7],[34,"Ommegang",547,547,15],[34,"Cali Squeeze",210,210,38],[34,"Brasserie d'Achouffe",138,138,11],[35,"Luxardo",8309,8312,8],[36,"Teremana",4450,4451,2],[36,"Jägermeister",3828,3835,9],[37,"Shock Top",1557,1601,15],[37,"Breckenridge",1515,1536,3],[37,"Sweetwater",1247,1265,7],[37,"Montauk",686,691,1],[37,"BrewDog",550,555,11],[37,"Blue Point",549,551,11],[37,"Revolver",493,493,3],[37,"Terrapin",469,470,11],[37,"Widmer",371,374,15],[37,"Hop Valley",263,263,7],[37,"10 Barrel",255,255,11],[38,"Chateau Ste. Michelle",3901,3973,0],[38,"14 Hands",1652,1653,0],[38,"Elouan",1044,1044,0],[38,"Northstar",390,390,0],[38,"Domaine Ste. Michelle",242,242,0],[38,"Poet's Leap",162,162,0],[38,"Washington Hills",126,126,0],[38,"Two Vines",108,108,0],[39,"Ferrari-Carano",2873,2873,0],[39,"Chalk Hill",1775,1775,0],[39,"Silverado",808,808,0],[39,"Acrobat",601,601,0],[39,"Chateau St. Jean",440,440,0],[39,"Four Graces",429,429,0],[39,"EOS",383,383,0],[39,"Guenoc",184,184,0],[39,"Kuleto",159,159,0],[40,"Sapporo",6281,6917,1],[40,"Unibroue",620,672,15],[41,"Stolichnaya",5258,6319,4],[41,"Kentucky Owl",774,779,3],[42,"Sierra Nevada",6742,6818,7],[43,"Disaronno",5293,5296,8],[43,"Tia Maria",1440,1440,20],[44,"Amaro Nonino",3914,3914,9],[44,"Nonino",2760,2764,9],[45,"Licor 43",6611,6611,8],[46,"Louis Jadot",2062,2063,0],[46,"Caposaldo",1678,1678,16],[46,"St. Francis",1315,1317,0],[46,"Sequoia Grove",807,807,0],[46,"Poema",590,592,0],[47,"Empress",5036,5052,10],[47,"Dulce Vida",1007,1009,2],[48,"Clase Azul",5900,5922,2],[49,"Planteray",3537,3891,5],[49,"Pierre Ferrand",900,913,23],[49,"Citadelle",895,895,10],[50,"Flowers",2540,2541,0],[50,"Faust",1998,1998,0],[50,"Benton Lane",604,604,0],[50,"Leviathan",543,543,0],[51,"Antinori",3215,3227,0],[51,"Santa Cristina",616,616,0],[51,"Guado al Tasso",562,565,0],[51,"Tignanello",509,509,0],[51,"Villa Antinori",411,411,0],[52,"Coppola",2713,2782,0],[52,"Black Stallion",880,880,0],[52,"Noble Vines",617,625,0],[52,"Z. Alexander Brown",353,353,0],[52,"Bota Box",178,178,0],[52,"Sofia",151,151,16],[53,"Chartreuse",4643,4933,34],[54,"Silver Oak",4164,4167,0],[54,"Twomey",742,742,0],[55,"Santa Margherita",4842,4842,0],[56,"J. Lohr",4573,4590,0],[56,"Ariel",140,140,53],[57,"Shiner",4477,4718,19],[58,"Allagash",4450,4481,15],[59,"Michter's",3968,4006,26],[59,"Bomberger's",389,389,3],[60,"Cakebread",4316,4319,0],[61,"Taylor Fladgate",2516,2528,18],[61,"Fonseca",1363,1365,18],[61,"Croft",344,344,18],[62,"Banfi",2758,2759,0],[62,"Castello Banfi",997,997,0],[62,"Melini",168,168,0],[63,"Graham's",1657,1683,18],[63,"Warre's",1049,1074,18],[63,"Dow's",760,781,18],[63,"Cockburn's",285,285,18],[64,"Surfside",3513,3551,36],[64,"Stateside Vodka",214,214,4],[65,"Founders",3553,3559,7],[65,"Mahou",111,111,1],[66,"WhistlePig",3614,3645,24],[67,"JUSTIN",3407,3411,0],[67,"Landmark",213,213,0],[68,"Austin Hope",2463,2463,0],[68,"Liberty School",724,724,0],[68,"Treana",437,437,0],[69,"Goslings",3529,3593,5],[70,"Seghesio",1254,1254,0],[70,"Pine Ridge",1063,1063,0],[70,"Raeburn",777,777,6],[70,"Archery Summit",496,496,41],[71,"Sho Chiku Bai",1114,1142,35],[71,"Elmer T. Lee",900,900,3],[71,"Kubota",794,794,35],[71,"Takara",389,391,35],[71,"Kikori",268,268,35],[72,"Jordan",3414,3414,0],[73,"Galliano",1428,1428,34],[73,"Bols",1059,1063,8],[73,"Partida",688,688,2],[73,"Bauchant",232,232,13],[74,"Willett",1729,1861,26],[74,"Noah's Mill",691,691,3],[74,"Rowan's Creek",534,534,3],[74,"Johnny Drum",297,297,3],[75,"Mionetto",3286,3287,16],[76,"Louis Roederer",1960,1962,12],[76,"Cristal",551,551,12],[76,"Delas",465,465,44],[76,"Scharffenberger",269,269,16],[77,"DeKuyper",1854,1876,8],[77,"Pucker",659,712,30],[77,"DeKuyper Peachtree",599,599,30],[78,"Yellowstone",950,952,3],[78,"Exotico",618,618,2],[78,"Rebel",548,548,3],[78,"Blood Oath",416,418,3],[78,"Ezra Brooks",391,392,3],[78,"George Remus",259,259,3],[79,"Giffard",3087,3176,8],[80,"Cigar City",1776,1778,11],[80,"Jai Alai",718,720,7],[80,"Dale's Pale Ale",347,348,7],[80,"Oskar Blues",240,242,11],[81,"Chimney Rock",1115,1115,0],[81,"Terlato",836,838,0],[81,"Seven Daughters",809,809,0],[81,"Federalist",285,285,0],[82,"Cocchi",3009,3012,18],[83,"Hess",2428,2455,0],[83,"Hess Select",496,496,0],[84,"Rodney Strong",2938,2940,0],[85,"Downeast",2728,2778,22],[86,"Firestone",1349,1351,0],[86,"Freakshow",733,735,11],[86,"The Seeker",678,678,7],[87,"Ace",1511,1511,22],[87,"Bread & Butter",501,503,0],[87,"Layer Cake",335,335,0],[87,"Firesteed",298,298,0],[88,"Templeton",1916,1917,24],[88,"Zaya",377,377,5],[88,"Howler Head",330,330,30],[89,"Taittinger",2550,2598,12],[90,"Don Q",2531,2558,5],[91,"Bonterra",889,889,0],[91,"Concha y Toro",349,349,0],[91,"Cono Sur",341,341,0],[91,"Casillero del Diablo",331,331,0],[91,"Fetzer",320,320,0],[91,"1000 Stories",187,187,0],[92,"Campo Viejo",1177,1177,0],[92,"Jacob's Creek",752,759,0],[92,"Brancott",451,451,0],[93,"St. George",2323,2326,4],[94,"Deschutes",2306,2310,11],[95,"Catena",2199,2284,0],[96,"Laurent-Perrier",2252,2258,12],[97,"Oyster Bay",2255,2256,0],[98,"Paul Hobbs",1778,1780,0],[98,"Viña Cobos",460,461,0],[99,"Freixenet",1337,1337,16],[99,"Segura Viudas",885,885,16],[100,"Dolin",2192,2200,18],[101,"Inniskillin",1184,1198,0],[101,"Jackson-Triggs",914,933,0],[102,"Zonin",1661,1663,0],[102,"Castello del Poggio",442,442,0],[103,"Ridge",1585,1593,0],[103,"Ridge Vineyards",496,496,0],[104,"Chloe",1994,1994,0],[105,"Gaja",1988,1992,0],[106,"Don Fulano",1944,1944,2],[107,"3 Floyds",1834,1941,11],[108,"Flor de Caña",1923,1935,5],[109,"Billecart-Salmon",1928,1929,12],[110,"Dalmore",1869,1892,6],[111,"Abita",1867,1879,11],[112,"Nickel & Nickel",1307,1307,0],[112,"Dolce",560,560,0],[113,"Vietti",1852,1854,0],[114,"Chopin",1790,1792,4],[115,"Corralejo",1780,1781,2],[116,"Amaro Montenegro",1778,1778,9],[117,"Ornellaia",1123,1123,0],[117,"Frescobaldi",643,644,0],[118,"Weihenstephaner",1641,1757,15],[119,"Schramsberg",1752,1754,16],[120,"Emmolo",1733,1733,0],[121,"Famille Perrin",1115,1133,0],[121,"La Vieille Ferme",572,572,0],[122,"Masi",1682,1703,0],[123,"Fortaleza",1684,1685,2],[124,"Groth",1683,1683,0],[125,"COS",1518,1682,0],[126,"Zenato",1676,1676,0],[127,"Heitz",1653,1654,0],[128,"Shafer",1605,1607,0],[129,"Juggernaut",963,963,11],[129,"Broadside",307,307,0],[129,"Crane Lake",214,214,0],[129,"Stone Cellars",119,120,0],[130,"Victory",1591,1597,7],[131,"Left Hand",1534,1586,11],[132,"Great Lakes",1508,1537,11],[133,"Hakutsuru",1504,1508,35],[134,"Siete Leguas",1494,1508,2],[135,"Brooklyn",1319,1319,7],[135,"Magic Hat",186,187,11],[136,"Narragansett",1487,1490,1],[137,"Chateau Montelena",1488,1488,0],[138,"Simi",1286,1287,0],[138,"Toad Hollow",195,195,0],[139,"Tsingtao",1441,1466,1],[140,"Carbliss",1450,1462,14],[141,"Honig",1456,1458,0],[142,"Louis Latour",1455,1456,0],[143,"Trefethen",1454,1455,0],[144,"Joseph Drouhin",1400,1454,0],[145,"Fiddlehead",1441,1441,7],[146,"Casa Dragones",1438,1438,2],[147,"Michele Chiarlo",1428,1428,0],[148,"Estrella",1417,1427,1],[149,"Frog's Leap",1421,1422,0],[150,"Tanteo",1406,1406,2],[151,"Benvolio",1403,1403,0],[152,"North Coast",1153,1178,11],[152,"Old Rasputin",207,207,21],[153,"King Estate",1383,1383,0],[154,"Torres",1045,1058,39],[154,"Familia Torres",314,314,0],[155,"Grgich Hills",1351,1351,0],[156,"Wente",1347,1351,0],[157,"Kronenbourg",970,970,1],[157,"Somersby",374,374,45],[158,"Hirsch",810,810,26],[158,"Denizen",295,298,5],[158,"Junipero",234,234,10],[159,"Allegrini",1324,1324,0],[160,"Chimay",1305,1313,11],[161,"Landshark",1298,1312,1],[162,"Spotted Cow",729,730,7],[162,"New Glarus",576,581,11],[163,"Ole Smoky",1181,1310,25],[164,"Argyle",1302,1302,0],[165,"Dr. Loosen",1299,1300,0],[166,"Tenuta San Guido",1289,1296,0],[167,"Caymus-Suisun",693,693,0],[167,"Crossbarn",596,596,0],[168,"Lustau",1071,1077,18],[168,"Valdespino",191,192,18],[169,"Kistler",1263,1264,0],[170,"Turley",1250,1252,0],[171,"Cline",1247,1247,0],[172,"Garage Beer",1237,1237,1],[173,"Cade",1212,1228,0],[174,"Chappellet",1224,1224,0],[175,"Prairie",1210,1222,4],[176,"Meletti",1220,1221,9],[177,"360",686,696,4],[177,"Broker's",322,323,10],[177,"Five Farms",194,194,17],[178,"Nicolas Feuillatte",1204,1204,12],[179,"Komos",1190,1198,2],[180,"Bardstown",966,983,3],[180,"Old Bardstown",212,212,3],[181,"Trimbach",1191,1191,0],[182,"Bollinger",1190,1190,12],[183,"Uncle Nearest",1138,1185,25],[184,"Smith & Cross",1151,1182,5],[185,"A to Z",1164,1180,0],[186,"Darioush",1175,1178,0],[187,"Kikusui",1167,1172,35],[188,"El Dorado",1143,1172,5],[189,"Sandeman",1161,1171,18],[190,"Delirium",1159,1159,11],[191,"Erath",1156,1156,0],[192,"Roederer Estate",1129,1129,16],[193,"Bertani",1124,1124,0],[194,"Gerard Bertrand",1120,1120,0],[195,"Stoneleigh",965,965,0],[195,"Geyser Peak",150,150,0],[196,"Gekkeikan",1106,1110,35],[197,"Miraval",1109,1109,0],[198,"Angeline",1105,1107,0],[199,"Michael David",1042,1097,0]];
+const GST={"CA":14824,"FL":9937,"TX":9747,"NY":8206,"IL":5321,"OH":3933,"NC":3853,"PA":3743,"AZ":3607,"WA":3038,"CO":2957,"MA":2940,"MI":2731,"VA":2654,"OR":2621,"WI":2465,"GA":2443,"NJ":2308,"TN":2044,"MO":1865,"MN":1853,"IN":1565,"LA":1546,"SC":1421,"MD":1110,"CT":1004,"NV":993,"KY":969,"OK":884,"UT":876,"KS":838,"ID":783,"NE":778,"ME":717,"NM":611,"IA":582,"DC":576,"AL":559,"RI":530,"VT":508,"NH":498,"WV":405,"DE":403,"MT":363,"AR":343,"AK":250,"MS":248,"ND":223,"SD":138,"HI":114,"WY":113,"PR":47};
+const HR={"Campari Group":[45930,76670],"Diageo":[44728,76670],"Pernod Ricard":[42464,76670],"Bacardi":[42369,76670],"Suntory Global Spirits":[31940,76670],"Brown-Forman":[31637,76670],"Sazerac":[29645,76670],"Fifth Generation":[26090,76670],"Rémy Cointreau":[22069,76670],"Heaven Hill":[21431,76670],"William Grant & Sons":[20524,76670],"Becle":[19019,76670],"LVMH":[14413,76670],"E. & J. Gallo":[13374,76670],"Angostura":[12252,76670],"Branca":[9309,76670],"Edrington":[8396,76670],"Luxardo":[8309,76670],"Mast-Jägermeister":[7739,76670],"Zamora":[6611,76670],"Constellation Brands":[6550,76670],"Illva Saronno":[6346,76670],"Clase Azul":[5900,76670],"Milestone Brands":[5896,76670],"SPI Group":[5837,76670],"Nonino":[5715,76670],"Chartreuse":[4643,76670],"Maison Ferrand":[4474,76670],"Chatham Imports":[4018,76670],"WhistlePig":[3614,76670],"Deutsch Family":[3262,76670],"Lucas Bols":[3252,76670],"Taylor Fladgate":[3227,76670],"Giffard":[3087,76670],"Symington Family Estates":[3071,76670],"Cocchi":[3009,76670],"Goslings":[3529,76670],"Takara":[2924,76670],"Serrallés":[2531,76670],"Infinium Spirits":[2482,76670],"De Kuyper":[2469,76670],"Asahi":[2451,76670],"MGP Ingredients":[2359,76670],"St. George":[2323,76670],"Dolin":[2192,76670],"Willett":[1968,76670],"Don Fulano":[1944,76670],"Grupo Pellas (Flor de Caña)":[1923,76670],"Whyte & Mackay":[1869,76670],"Chopin":[1790,76670],"Tequilera Corralejo, S.A. de C.V.":[1780,76670],"Montenegro":[1778,76670],"Tilray Brands":[1699,76670],"Fortaleza":[1684,76670],"Hakutsuru":[1504,76670],"Siete Leguas":[1494,76670],"Playa Holding Corporation":[1438,76670],"Trinchero":[1417,76670],"Tanteo":[1406,76670],"Hotaling & Co":[1278,76670],"Meletti":[1220,76670],"Prairie Organic Spirits":[1210,76670],"Grupo Estevez":[1195,76670],"Komos":[1190,76670],"Ole Smoky":[1181,76670],"Kikusui":[1167,76670],"Sogrape Vinhos":[1161,76670],"McCormick Distilling Company":[1151,76670],"Hayman Group Limited":[1151,76670],"Bardstown":[1150,76670],"Demerara Distillers":[1143,76670],"Uncle Nearest Distillery":[1138,76670],"Gekkeikan":[1106,76670],"Torres":[1045,76670],"The Wine Group":[1025,76670],"Crimson Wine Group":[777,76670],"Molson Coors":[459,76670],"Heineken":[232,76670],"Stateside":[214,76670]};
+const GSO=['CA','TX','FL','NY','IL','OH','PA','NC','AZ','MA','WA','CO','MI','VA','OR','GA','WI','NJ','TN','MO','MN','IN','LA','SC','MD','CT','NV','KY','OK','UT','KS','NE','ID','ME','DC','AL','NM','IA','RI','VT','NH','DE','WV','AR','MT','AK','MS','ND','SD','HI','WY','PR'];
+const GV=[[4749,4375,4056,3821,2422,1803,1864,1498,1502,1493,1009,1272,1364,1069,731,1227,1047,1326,923,758,762,727,665,722,592,534,470,429,461,456,378,356,260,273,347,256,221,287,318,159,263,198,164,163,119,59,102,99,65,56,41,25],
+[4554,4687,4365,2957,2224,1714,1600,1526,1688,1304,755,991,1180,1074,460,1159,945,1031,947,833,719,704,708,740,551,459,465,452,425,419,408,386,240,211,221,280,216,321,239,129,224,191,183,157,137,64,120,110,66,50,45,22],
+[6111,4820,4527,3481,2354,1596,1443,1438,1734,1491,950,1245,1154,1077,631,1080,969,1211,911,696,633,702,684,696,523,509,541,411,472,473,353,337,257,211,248,263,269,275,289,142,239,194,163,162,129,72,109,88,54,59,35,27],
+[4323,3615,3157,3273,1850,1498,1452,1242,1193,1303,959,1035,1067,951,639,923,779,1031,742,627,601,526,621,605,444,449,440,344,326,350,314,273,226,224,295,220,143,224,252,148,223,170,123,114,95,66,82,73,51,47,34,13],
+[4061,3939,3546,3049,1862,1428,1213,1241,1169,1191,798,1002,1057,915,565,1062,737,1056,849,608,578,552,622,578,462,409,411,389,418,387,320,267,210,161,311,245,170,223,238,112,187,171,134,140,85,48,85,60,47,46,32,21],
+[3984,4262,3405,2495,2263,1718,1727,1375,1536,1205,815,1266,1188,1018,599,1095,1136,1110,844,668,833,770,642,675,546,414,395,439,454,330,367,343,267,218,188,276,233,304,248,113,196,209,183,159,149,64,122,101,66,47,36,19],
+[4626,4007,3447,3792,1774,1359,1370,1214,1255,1415,998,1227,1064,943,748,1033,681,1082,862,638,548,552,603,638,474,451,464,361,378,399,309,253,208,225,341,230,186,202,248,158,215,160,118,132,85,63,80,46,38,51,34,22],
+[3141,2833,2400,2216,1492,1188,1141,966,962,768,690,797,835,780,542,677,571,674,617,562,480,465,420,468,346,295,319,367,291,324,261,233,180,176,228,188,135,174,170,95,146,136,98,100,78,47,62,45,37,46,22,13],
+[3464,2956,2899,2034,1708,1338,1000,983,1193,1252,647,946,992,777,385,881,687,792,763,541,602,532,471,560,417,412,369,354,292,321,252,240,222,154,228,193,135,228,186,116,196,175,107,107,87,66,100,62,46,43,28,7],
+[2768,2886,2287,1707,1444,1203,845,979,940,695,617,775,831,678,423,792,519,608,691,529,426,506,540,477,339,240,288,346,240,250,276,211,163,119,207,206,121,178,126,71,116,113,97,98,67,43,81,49,44,27,30,2],
+[4383,3763,3143,2895,1775,1069,1207,932,1384,1161,601,759,867,892,380,899,646,928,641,421,503,483,498,490,407,357,367,291,343,309,238,208,162,127,242,184,208,193,220,69,135,161,103,103,58,58,79,61,36,50,13,22],
+[2895,3163,2470,2072,1565,1147,1008,965,927,777,560,812,882,725,375,929,585,754,733,449,440,508,470,474,362,315,331,409,308,331,240,239,153,122,205,182,148,179,151,73,161,114,116,111,61,39,79,49,39,38,28,15],
+[3040,2207,2428,2089,1085,617,629,625,688,774,465,517,581,482,257,609,310,749,410,262,260,248,396,279,286,264,284,147,182,282,105,120,112,109,245,116,86,81,156,57,99,93,52,82,49,28,55,26,15,40,18,15],
+[1887,2494,1443,1157,946,661,719,783,795,689,419,570,616,581,328,619,386,452,505,404,209,320,304,475,274,191,196,265,233,245,208,154,110,63,145,122,81,118,131,44,106,84,59,103,53,37,50,35,25,26,21,4],
+[1399,1605,1837,1443,1077,969,1144,528,687,1151,252,393,622,505,106,504,442,671,438,327,328,362,212,362,369,301,228,232,211,134,168,141,107,137,120,107,91,169,203,51,185,173,103,72,58,21,58,65,31,26,10,11],
+[1995,1730,1630,1862,1021,622,565,512,598,619,460,577,553,420,273,440,378,503,327,316,236,260,303,262,247,174,192,126,126,201,169,122,95,91,190,84,65,78,119,57,119,56,38,61,43,25,31,12,30,24,12,5],
+[1686,2042,1405,1017,881,632,493,531,651,555,424,603,524,448,243,403,271,397,342,274,253,304,293,220,200,170,207,142,217,240,149,120,119,76,93,117,94,92,82,41,121,52,67,76,55,20,48,32,29,31,17,11],
+[2340,2331,1671,1608,879,563,590,553,718,660,477,561,665,517,281,475,251,608,348,237,249,293,334,297,229,209,276,135,226,231,140,94,131,112,173,110,100,100,117,82,152,68,50,76,56,35,45,21,15,31,21,13],
+[2411,3206,2409,1642,1155,807,769,785,921,768,433,686,705,556,209,698,443,691,556,431,361,383,410,427,317,286,262,257,262,260,231,180,126,104,168,188,116,153,139,62,141,128,86,101,48,32,61,43,28,36,19,9],
+[2044,1255,1375,951,471,443,400,326,561,455,212,316,303,253,150,306,211,498,215,136,140,161,225,163,165,156,177,118,91,183,73,73,74,44,74,60,60,52,102,40,72,54,33,32,37,27,41,15,21,29,11,9],
+[1579,1219,1332,661,311,308,319,371,444,476,168,334,303,195,135,373,220,407,200,160,199,124,255,185,154,153,166,121,90,91,70,76,56,69,80,78,70,55,108,25,95,64,23,42,17,19,40,12,17,25,8,6],
+[1369,1285,1210,650,794,601,574,485,513,183,163,628,876,348,90,336,328,291,244,186,291,327,153,226,163,93,152,127,132,131,94,87,68,33,87,78,60,104,39,5,22,69,45,38,21,20,30,45,21,18,11,3],
+[1526,1026,1267,508,439,327,221,279,440,313,136,196,340,209,68,266,210,310,206,151,146,109,255,170,100,130,161,89,57,86,74,65,55,29,45,56,37,71,63,26,60,14,34,35,39,19,27,11,13,17,7,4],
+[1199,953,1056,454,426,329,247,241,421,384,135,254,305,158,80,249,214,309,202,115,124,107,241,130,116,126,155,82,58,117,50,75,68,30,51,54,42,49,81,30,52,39,22,28,18,16,22,15,12,22,10,1],
+[2133,969,1156,1332,664,348,443,304,478,363,237,310,272,276,149,323,156,391,151,128,116,140,103,133,107,145,183,68,98,125,51,54,38,37,135,39,40,41,78,20,34,41,21,34,26,11,13,5,7,20,6,14],
+[1307,939,839,586,483,444,375,341,372,276,191,188,286,266,186,274,218,315,171,132,209,145,206,135,143,72,97,73,66,66,153,59,57,70,54,46,59,68,48,19,47,39,21,22,14,20,19,16,8,16,10,5],
+[888,900,800,604,629,616,542,373,410,288,253,193,391,234,176,219,432,316,146,93,350,144,87,195,123,89,90,126,76,88,56,106,102,36,19,55,42,117,38,34,53,45,59,25,64,15,21,41,25,14,12,1],
+[77,1085,2094,562,653,736,1368,596,33,171,14,25,367,363,8,473,221,606,327,307,15,254,196,399,301,145,7,131,174,5,124,12,5,3,49,115,2,64,44,0,3,141,89,54,2,1,46,5,1,2,1,0],
+[1492,1019,1016,914,616,338,360,309,346,315,311,335,308,255,243,333,208,223,246,147,145,169,216,143,119,89,142,98,75,87,68,68,61,41,144,50,52,44,44,41,25,42,24,27,21,18,33,10,6,15,8,4],
+[1305,615,639,966,518,210,320,203,305,355,311,302,174,138,228,205,94,216,176,90,124,85,83,131,74,89,88,67,41,87,39,37,68,44,103,39,26,18,55,35,62,25,2,18,27,8,4,4,3,18,5,6],
+[445,1348,401,310,777,341,255,397,240,174,520,276,371,187,243,224,506,87,205,140,172,146,107,162,49,45,44,76,84,74,79,104,98,70,29,47,36,77,12,40,42,22,29,22,62,17,26,31,27,3,12,1],
+[1056,948,1061,695,439,376,268,272,318,278,121,239,265,183,66,292,201,245,222,148,152,142,199,137,110,104,115,126,66,101,76,71,38,15,29,67,47,50,92,17,69,37,40,42,7,20,37,11,14,7,6,4],
+[894,960,1031,679,280,336,316,265,271,402,129,209,184,196,60,267,125,323,165,167,164,157,130,106,138,207,98,125,70,73,84,55,36,19,52,85,65,52,86,27,75,57,41,40,4,15,35,10,14,15,10,3],
+[987,784,724,840,426,226,223,187,176,244,179,199,198,185,97,192,108,250,139,120,114,89,86,107,89,75,87,42,61,79,57,33,26,27,112,38,14,16,37,21,27,27,19,28,20,11,8,8,12,15,6,3],
+[2410,352,231,498,335,160,224,135,452,137,101,190,76,189,65,94,123,115,70,315,58,37,29,48,58,59,155,25,174,47,215,113,58,33,43,26,32,47,19,18,92,10,17,32,17,5,9,15,16,5,1,2],
+[1128,738,450,603,447,325,299,253,268,223,225,271,243,173,125,185,120,143,172,108,94,94,114,99,89,77,74,52,44,70,63,50,43,50,96,28,28,53,51,36,45,37,10,20,11,18,15,11,9,8,4,5],
+[605,932,732,344,275,250,222,236,282,98,122,167,164,166,46,281,90,143,163,146,95,112,115,101,97,59,88,62,69,110,80,68,40,17,36,39,38,36,30,9,33,28,34,45,14,10,23,8,10,8,6,8],
+[334,504,673,953,203,290,189,159,98,46,153,471,58,113,259,590,72,139,121,93,39,56,23,144,72,65,54,40,47,33,37,25,57,14,33,28,18,16,12,1,15,17,9,18,2,9,2,9,7,2,2,3],
+[704,474,611,307,271,185,175,173,234,169,290,121,136,133,112,150,155,166,107,73,119,81,92,63,97,80,90,73,37,80,38,47,37,10,16,28,46,29,51,10,31,19,14,17,11,13,12,4,14,12,9,1],
+[1048,315,686,249,199,196,99,176,172,230,75,121,117,142,70,124,66,209,119,48,60,45,64,90,52,113,113,37,33,44,17,45,31,44,25,26,33,18,32,36,33,15,12,17,31,8,9,13,6,12,4,1],
+[1383,519,512,405,261,137,139,144,208,148,155,155,122,167,92,128,58,93,69,62,54,58,90,54,50,40,80,46,53,87,33,23,25,18,41,27,21,23,19,8,16,15,18,16,11,10,8,7,3,9,5,1],
+[433,390,573,592,251,168,235,157,136,264,87,128,224,118,73,54,101,272,70,62,142,69,89,83,61,77,76,55,45,35,22,40,17,47,44,23,10,25,75,17,50,20,8,16,21,12,10,16,11,11,6,3],
+[1292,346,499,317,245,185,400,387,200,109,68,129,147,168,57,173,108,179,125,66,87,71,67,168,129,44,164,48,45,90,30,41,78,11,48,40,48,31,25,16,12,32,36,19,24,5,12,26,6,17,3,1],
+[452,644,490,444,230,182,145,150,146,255,103,100,184,141,60,93,77,189,82,64,69,53,113,92,83,80,62,43,40,95,36,40,26,36,46,32,13,31,47,20,61,15,20,20,16,5,12,10,16,6,3,2],
+[802,377,366,630,286,174,132,119,174,195,177,210,137,95,120,120,68,151,82,73,49,41,52,47,30,56,58,40,27,42,34,25,22,21,59,10,16,4,28,22,16,15,4,16,18,4,3,6,3,9,6,1],
+[853,975,553,363,374,147,167,181,287,162,110,224,170,125,85,95,65,180,100,84,78,65,44,85,53,36,101,36,50,53,49,30,33,21,63,21,11,23,25,6,29,21,9,17,10,5,6,3,4,6,2,1],
+[585,450,502,476,208,196,109,141,164,137,45,122,129,103,46,83,89,187,78,67,31,53,100,96,75,66,57,40,14,59,52,25,19,25,48,8,24,12,60,19,37,14,10,3,5,8,5,5,2,14,5,4],
+[533,692,333,365,155,182,141,121,180,196,244,176,97,111,100,160,59,84,109,58,63,76,66,56,43,59,58,33,48,66,37,31,51,14,34,36,20,14,28,8,22,15,5,13,15,14,9,2,4,7,2,0],
+[893,757,463,524,253,180,127,100,235,145,106,189,124,91,55,125,59,151,75,37,56,54,65,67,47,54,88,29,37,57,38,39,19,10,55,13,19,5,29,3,21,14,7,15,8,1,5,2,5,7,5,0],
+[487,361,285,384,288,94,75,106,89,180,138,119,115,106,80,125,77,69,118,58,57,106,50,68,37,45,35,30,34,49,29,21,15,27,81,19,6,5,27,15,8,10,0,22,12,13,11,4,1,10,4,2]];
+const B=BB.map(r=>[P[r[0]][0],r[1],r[2],r[3],CATS[r[4]][0]]);
+const GEO={};GV.forEach((row,i)=>{const o={};row.forEach((v,j)=>{if(v)o[GSO[j]]=v;});GEO[P[i][0]]=o;});
+const US=122587,BRANDED=106468,ATTR=2497884;
+
+const f=n=>n.toLocaleString();
+let curP="Diageo", curB=null;
+
+const PM={}; P.forEach((r,i)=>PM[r[0]]={o:r[1],m:r[2],b:r[3],rank:i+1});
+const byP={}; B.forEach(r=>{(byP[r[0]]=byP[r[0]]||[]).push(r);});
+
+const SPIRIT=['Vodka','Gin','Tequila','Rum','Bourbon','Scotch','Whiskey','Irish Whiskey','Tennessee Whiskey','Mezcal','Cognac','Brandy/Armagnac','Rye Whiskey','Canadian Whisky','Japanese Whisky','American Whiskey','Corn Whiskey','Moonshine','Liqueur','Other Liqueur','Orange Liqueur','Coffee Liqueur','Cream Liqueur','Fruit Liqueur','Herbal Liqueur','Whisky Liqueur','Almond Liqueur','Flavored Liqueur','Amaro/Bitter Aperitif','Bitters','Fortified','NA Spirit','Sake','Soju','Schnapps','Cachaça'];
+const BEER=['Lager/Pilsner','Pale Ale/IPA','Wheat/Witbier','Stout/Porter','Amber/Brown','Sour/Wild','Other Beer','NA Beer','Hard Seltzer','Hard Cider','FMB','RTD','Cider'];
+function bucket(cat){ if(SPIRIT.includes(cat))return 0; if(BEER.includes(cat))return 1;
+  if(cat&&(cat==='Wine'||cat.includes('Wine')||cat==='Sparkling'||cat==='Champagne'||cat==='Rosé'||cat==='Pinot Noir'||cat==='Sauvignon Blanc'))return 2; return 3; }
+const COLS=['#060A57','#4a6ee0','#85E4FD','#dfe4f2'];
+const CATNAMES=['Spirits','Beer &amp; RTD','Wine','Other'];
+
+function segbar(el,lg,buckets){
+  const tot=buckets.reduce((a,b)=>a+b,0)||1;
+  el.innerHTML=buckets.map((v,i)=>v>0?'<i style="width:'+(v/tot*100)+'%;background:'+COLS[i]+'"></i>':'').join('');
+  lg.innerHTML=buckets.map((v,i)=>v>0?'<b>'+CATNAMES[i]+' '+(v/tot*100).toFixed(1)+'%</b> <span class="g">('+f(v)+')</span>':'').filter(Boolean).join(' &nbsp;·&nbsp; ');
+}
+
+/* market tab */
+(function(){
+  const mb=[0,0,0,0]; CATS.forEach(r=>{ mb[bucket(r[0])]+=r[1]; });
+  segbar(document.getElementById('mseg'),document.getElementById('mlg'),mb);
+})();
+
+/* cartogram */
+const TILE={AK:[0,0],ME:[11,0],VT:[10,1],NH:[11,1],WA:[1,2],ID:[2,2],MT:[3,2],ND:[4,2],MN:[5,2],IL:[6,2],WI:[7,2],MI:[8,2],NY:[9,2],RI:[10,2],MA:[11,2],OR:[1,3],NV:[2,3],WY:[3,3],SD:[4,3],IA:[5,3],IN:[6,3],OH:[7,3],PA:[8,3],NJ:[9,3],CT:[10,3],CA:[1,4],UT:[2,4],CO:[3,4],NE:[4,4],MO:[5,4],KY:[6,4],WV:[7,4],VA:[8,4],MD:[9,4],DE:[10,4],AZ:[2,5],NM:[3,5],KS:[4,5],AR:[5,5],TN:[6,5],NC:[7,5],SC:[8,5],DC:[9,5],OK:[4,6],LA:[5,6],MS:[6,6],AL:[7,6],GA:[8,6],HI:[0,7],TX:[4,7],FL:[8,7]};
+const CELL=62,GAP=4;
+function shade(t){ // t in 0..1 -> light to navy
+  const a=[223,228,242],b=[6,10,87];
+  const c=a.map((v,i)=>Math.round(v+(b[i]-v)*t));
+  return 'rgb('+c.join(',')+')';
+}
+function drawMap(){
+  const g=GEO[curP]||{};
+  const svg=document.getElementById('map');
+  let mx=0; Object.keys(TILE).forEach(s=>{ const st=GST[s]||0, mine=g[s]||0; if(st>0) mx=Math.max(mx,mine/st); });
+  let h='';
+  Object.keys(TILE).forEach(s=>{
+    const [c,r]=TILE[s], x=c*(CELL+GAP), y=r*(CELL+GAP);
+    const st=GST[s]||0, mine=g[s]||0, pen=st>0?mine/st:0;
+    const t=mx>0?Math.pow(pen/mx,.7):0;
+    h+='<rect class="st" x="'+x+'" y="'+y+'" width="'+CELL+'" height="'+CELL+'" rx="5" fill="'+shade(.08+.92*t)+'"><title>'+s+' — '+f(mine)+' of '+f(st)+' menus ('+(pen*100).toFixed(1)+'%)</title></rect>';
+    const dark=t>.42;
+    h+='<text class="cd" x="'+(x+8)+'" y="'+(y+20)+'" fill="'+(dark?'#fff':'#060A57')+'">'+s+'</text>';
+    h+='<text class="vl" x="'+(x+8)+'" y="'+(y+34)+'" fill="'+(dark?'rgba(255,255,255,.85)':'#7a8199')+'">'+(st?(pen*100).toFixed(0)+'%':'—')+'</text>';
+  });
+  svg.innerHTML=h;
+}
+function renderGeo(){
+  const g=GEO[curP];
+  document.getElementById('geh').textContent=curP+' — Share of Menus by State';
+  document.getElementById('gth').textContent=curP+' — Top States';
+  const svg=document.getElementById('map'), tb=document.getElementById('gt');
+  if(!g){ svg.style.display='none'; tb.innerHTML='';
+    document.getElementById('gen').textContent='State detail is available for the 50 largest companies. '+curP+' is #'+PM[curP].rank+'.';
+    document.getElementById('gtn').textContent=''; return; }
+  svg.style.display=''; drawMap();
+  const rows=Object.keys(g).map(s=>[s,g[s],GST[s]||0]).sort((a,b)=>b[1]-a[1]).slice(0,15);
+  tb.innerHTML='';
+  rows.forEach((r,i)=>{ tb.innerHTML+='<tr><td class="rk">'+(i+1)+'</td><td class="nm">'+r[0]+'</td><td>'+f(r[1])+'</td><td>'+f(r[2])+'</td><td class="tl2">'+(r[2]?(r[1]/r[2]*100).toFixed(1)+'%':'—')+'</td></tr>'; });
+  document.getElementById('gtn').textContent='Share = the state’s alcohol-serving outlets that list at least one '+curP+' brand. Company level (all brands). US states only.';
+  document.getElementById('gen').innerHTML='Darker = higher share of the state’s menus carrying <b>'+curP+'</b>. Hover a state for counts.';
+}
+
+const SPR=Object.keys(HR).sort((a,b)=>HR[b][0]-HR[a][0]);
+function render(){
+  const d=PM[curP]; if(!d){ return; }
+  const list=(byP[curP]||[]).slice().sort((a,b)=>b[2]-a[2]);
+  const br=curB?list.find(r=>r[1]===curB):null;
+  const h=HR[curP];
+
+  if(br){
+    const bi=list.indexOf(br)+1;
+    document.getElementById('h1').innerHTML=curB.toUpperCase()+' <span style="font-weight:400;color:var(--sky)">— owned by '+curP+'</span>';
+    document.getElementById('uni').innerHTML='Brand view. Base: <b>'+f(US)+'</b> US &amp; Canada bars and restaurants with an alcohol menu online · September 2026.';
+    document.getElementById('k1').textContent=f(br[2]);
+    document.getElementById('l1').textContent='Menus carrying '+curB;
+    document.getElementById('k2').textContent=(br[2]/US*100).toFixed(1)+'%';
+    document.getElementById('l2').textContent='Share of menus';
+    document.getElementById('k3').textContent=f(br[3]);
+    document.getElementById('l3').textContent='Menu listings';
+    document.getElementById('k4').textContent='#'+bi;
+    document.getElementById('l4').textContent='Rank within '+curP+'’s '+list.length+' brands';
+    /* peers: same category */
+    const peers=B.filter(r=>r[4]===br[4]).sort((a,b)=>b[2]-a[2]);
+    const pr=peers.findIndex(r=>r[1]===curB&&r[0]===curP)+1;
+    let set=peers.slice(0,4); if(pr>4) set=set.concat([peers[pr-1]]);
+    const mx=peers[0][2];
+    document.getElementById('csh').textContent='Competitors — '+br[4];
+    document.getElementById('cs').innerHTML=set.map(r=>{const sel=r[1]===curB&&r[0]===curP;return '<div class="comp"><div class="n2">'+(peers.indexOf(r)+1)+'. '+r[1]+' <span style="font-weight:500;color:#7a8199">('+r[0]+')</span></div><div class="pb"><i class="'+(sel?'coral':'')+'" style="width:'+Math.max(4,r[2]/mx*100).toFixed(1)+'%"></i></div><div class="s2">'+f(r[2])+' menus · '+(r[2]/US*100).toFixed(1)+'%</div></div>';}).join('');
+    document.getElementById('csn').textContent=curB+' ranks #'+pr+' of '+peers.length+' tracked '+br[4]+' brands by menus.';
+    document.getElementById('hrh').textContent='Menus Without '+curB;
+    document.getElementById('hrv').textContent=f(US-br[2]);
+    document.getElementById('hrn').innerHTML='menus serve alcohol but don’t carry <b>'+curB+'</b>, including '+f(US-BRANDED)+' that name no brand at all.';
+  } else {
+    document.getElementById('h1').innerHTML=curP.toUpperCase()+' <span style="font-weight:400;color:var(--sky)">— share of the menu</span>';
+    document.getElementById('uni').innerHTML='Base: <b>'+f(US)+'</b> US &amp; Canada bars and restaurants with an alcohol menu online · September 2026.';
+    document.getElementById('k1').textContent=f(d.o);
+    document.getElementById('l1').textContent='Menus carrying '+curP+' brands';
+    document.getElementById('k2').textContent=(d.o/US*100).toFixed(1)+'%';
+    document.getElementById('l2').textContent='Share of menus';
+    document.getElementById('k3').textContent=f(d.b);
+    document.getElementById('l3').textContent='Brands on menus ('+f(d.m)+' listings)';
+    const sr=h?SPR.indexOf(curP)+1:0;
+    document.getElementById('k4').textContent=h?'#'+sr:'#'+d.rank;
+    document.getElementById('l4').textContent=h?'Among spirits companies, by menus':'Among all drinks companies, by listings';
+    const cs=document.getElementById('cs');
+    if(h){
+      let set=SPR.slice(0,4); if(sr>4) set=set.concat([curP]);
+      const mx=HR[SPR[0]][0];
+      document.getElementById('csh').textContent='Competitors — Spirits';
+      cs.innerHTML=set.map(n=>'<div class="comp"><div class="n2">'+(SPR.indexOf(n)+1)+'. '+n+'</div><div class="pb"><i class="'+(n===curP?'coral':'')+'" style="width:'+Math.max(4,HR[n][0]/mx*100).toFixed(1)+'%"></i></div><div class="s2">'+f(HR[n][0])+' menus with a spirits brand · '+(HR[n][0]/HR[n][1]*100).toFixed(1)+'% of spirits menus</div></div>').join('');
+      document.getElementById('csn').textContent='Ranked by menus listing at least one of the company’s spirits brands, out of '+f(h[1])+' menus that list spirits.';
+      document.getElementById('hrh').textContent='Spirits Menus Without You';
+      document.getElementById('hrv').textContent=f(h[1]-h[0]);
+      document.getElementById('hrn').innerHTML='menus list spirits but none from <b>'+curP+'</b> — '+((h[1]-h[0])/h[1]*100).toFixed(0)+'% of the '+f(h[1])+' menus that list spirits. Add '+f(US-BRANDED)+' alcohol menus that name no brand at all, and that is the prospect list.';
+    } else {
+      let set=P.slice(0,4); if(d.rank>4) set=set.concat([P[d.rank-1]]);
+      const mx=P[0][2];
+      document.getElementById('csh').textContent='Competitors — All Drinks Companies';
+      cs.innerHTML=set.map(r=>'<div class="comp"><div class="n2">'+PM[r[0]].rank+'. '+r[0]+'</div><div class="pb"><i class="'+(r[0]===curP?'coral':'')+'" style="width:'+Math.max(4,r[2]/mx*100).toFixed(1)+'%"></i></div><div class="s2">'+f(r[2])+' listings · '+f(r[1])+' menus</div></div>').join('');
+      document.getElementById('csn').textContent='Ranked by menu listings.';
+      document.getElementById('hrh').textContent='Menus Without You';
+      document.getElementById('hrv').textContent=f(US-d.o);
+      document.getElementById('hrn').innerHTML='menus serve alcohol but carry nothing from <b>'+curP+'</b>, including '+f(US-BRANDED)+' that name no brand at all.';
+    }
+  }
+
+  /* portfolio */
+  document.getElementById('pfh').textContent=curP+' — Brands on Menus';
+  const tb=document.getElementById('pf'); tb.innerHTML='';
+  let shown=list.slice(0,20); if(br&&!shown.includes(br)) shown=shown.concat([br]);
+  shown.forEach(r=>{
+    const tr=document.createElement('tr'); tr.className='click';
+    const sel=br&&r===br;
+    tr.innerHTML='<td class="rk">'+(list.indexOf(r)+1)+'</td><td class="nm"'+(sel?' style="color:#DB5461"':'')+'>'+r[1]+'</td><td>'+f(r[2])+
+      '</td><td class="tl2">'+(r[2]/US*100).toFixed(1)+'%</td><td>'+f(r[3])+'</td>';
+    tr.onclick=()=>{document.getElementById('bi').value=r[1];curB=r[1];render();};
+    tb.appendChild(tr);
+  });
+  document.getElementById('pfn').textContent=(list.length>20?'Top 20 of '+list.length+' brands shown. ':'')+'Click a brand to see its own position and competitors.';
+
+  const buckets=[0,0,0,0];
+  list.forEach(r=>{ buckets[bucket(r[4])]+=r[3]; });
+  segbar(document.getElementById('segbar'),document.getElementById('seglg'),buckets);
+
+  renderGeo();
+}
+
+/* search */
+function mkDrop(inp,drop,cntEl,items,label,onPick){
+  function rd(qv){
+    const ql=qv.toLowerCase().trim();
+    const hit=items.filter(it=>it.k.toLowerCase().includes(ql)).slice(0,60);
+    drop.innerHTML=hit.length?hit.map(it=>'<div class="opt" data-k="'+it.k.replace(/"/g,'&quot;')+'"><span>'+it.k+'</span><span class="m">'+it.m+'</span></div>').join('')
+      :'<div class="opt"><span style="color:#7a8199">No match</span></div>';
+    drop.querySelectorAll('.opt[data-k]').forEach(o=>o.onclick=()=>{inp.value=o.dataset.k;drop.classList.remove('on');onPick(o.dataset.k);});
+  }
+  inp.addEventListener('focus',()=>{rd(inp.value);drop.classList.add('on');});
+  inp.addEventListener('input',()=>{rd(inp.value);drop.classList.add('on');if(inp.value.trim()==='')onPick(null);});
+  document.addEventListener('click',e=>{if(!inp.parentNode.contains(e.target))drop.classList.remove('on');});
+  cntEl.textContent=items.length.toLocaleString()+' '+label+' searchable';
+}
+mkDrop(document.getElementById('pi'),document.getElementById('pd'),document.getElementById('pc'),
+  P.map(r=>({k:r[0],m:f(r[1])+' outlets'})),'companies',
+  k=>{ if(k){curP=k;curB=null;document.getElementById('bi').value='';render();} else {curB=null;render();} });
+mkDrop(document.getElementById('bi'),document.getElementById('bd'),document.getElementById('bc'),
+  B.slice().sort((a,b)=>b[2]-a[2]).map(r=>({k:r[1],m:f(r[2])+' outlets'})),'brands',
+  k=>{ if(k){ const m=B.find(r=>r[1]===k); if(m){curP=m[0];curB=k;document.getElementById('pi').value=m[0];render();} } else {curB=null;render();} });
+
+/* tabs */
+function goTab(t){
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x.dataset.t===t));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.getElementById('p-'+t).classList.add('on');
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>goTab(b.dataset.t)));
+document.querySelectorAll('.ix').forEach(b=>b.addEventListener('click',()=>{
+  goTab(b.dataset.go);
+  document.querySelector('.ctl').scrollIntoView({behavior:'smooth',block:'start'});
+  if(b.dataset.go!=='mk') setTimeout(()=>document.getElementById('pi').focus(),420);
+}));
+
+document.getElementById('pi').value='Diageo';
+render();
+</script></body></html>
